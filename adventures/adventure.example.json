@@ -14,7 +14,9 @@
       ],
       "choices": [
         {
-          "text": "Enter the cathedral.",
+          "text":      "Enter the cathedral.",
+          "follow_up": "You enter.",
+
           "next": "cathedral-main_hall",
 
           "on_select": {
@@ -22,7 +24,8 @@
           }
         },
         {
-          "text": "Do not.",
+          "text":      "Do not.",
+          "follow_up": "You do not.",
           "next": "ending-leave_immediately",
 
           "hide_if": "cathedral-have_entered"
