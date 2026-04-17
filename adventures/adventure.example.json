@@ -17,18 +17,19 @@
           "text":      "Enter the cathedral.",
           "follow_up": "You enter.",
 
-          "next": "cathedral-main_hall",
-
           "on_select": {
             "set": [ "cathedral-have_entered" ]
-          }
+          },
+
+          "next": "cathedral-main_hall"
         },
         {
           "text":      "Do not.",
           "follow_up": "You do not.",
-          "next": "ending-leave_immediately",
 
-          "hide_if": "cathedral-have_entered"
+          "hide_if": "cathedral-have_entered",
+
+          "next": "ending-leave_immediately"
         }
       ]
     },
