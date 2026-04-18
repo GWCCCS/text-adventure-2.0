@@ -1,9 +1,7 @@
 {
   "__meta__": {
     "title":        "\"For Example\"",
-    "subtitle":     "The Exemplary Journey.",
-    "prompt_start": "Your time has come, press enter to begin...",
-    "prompt_end":   "..."
+    "subtitle":     "The Exemplary Journey."
   },
 
   "__main__": {
