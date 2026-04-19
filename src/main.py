@@ -12,16 +12,21 @@ ADVENTURES_DIR = "adventures"
 
 # util
 
-def choose_file(dir: str) -> str:
+def choose_file(path: str) -> str:
+    try:
+        filenames = os.listdir(path)
+    except FileNotFoundError:
+        path = f"../{path}" # fix for /src/ path issues
+        filenames = os.listdir(path)
+    filenames = [ f for f in filenames if f.endswith(".json") ]
     print("Choose a file:")
-    filenames = [ f for f in os.listdir(dir) if f.endswith(".json") ]
     for i, f in enumerate(filenames): print(f"{i+1}. {f}")
     while True:
         user_input = input("> ")
         try:
             idx = int(user_input) - 1
             if 0 >= idx < len(filenames):
-                return f"{dir}/{filenames[idx]}"
+                return f"{path}/{filenames[idx]}"
         except ValueError: pass
 
 # main
