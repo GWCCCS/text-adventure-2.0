@@ -1,5 +1,5 @@
-# Text Adventure 2.0
+# Text Adventure Engine
 
-> This is our second iteration of creating a customizable (json-loaded) text adventure engine in Python.
+> A (reasonably) configurable engine for text adventure games, built in Python.
 
 ![example-output-0](res/example-output-0.png)
