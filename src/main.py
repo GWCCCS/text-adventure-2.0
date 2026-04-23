@@ -25,7 +25,7 @@ def choose_file(path: str) -> str:
         user_input = input("> ")
         try:
             idx = int(user_input) - 1
-            if 0 >= idx < len(filenames):
+            if 0 <= idx < len(filenames):
                 return f"{path}/{filenames[idx]}"
         except ValueError: pass
 
