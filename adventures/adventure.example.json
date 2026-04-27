@@ -19,11 +19,10 @@
         },
         {
           "text":      "Do not.",
-          "follow_up": "You do not.",
 
           "hide_if": "resisted-0",
 
-          "next": "ENDING-leave_immediately"
+          "next": "leave-immediately-confirm"
         },
         {
           "text":      "(You must enter.)",
@@ -32,6 +31,28 @@
           "show_if": "resisted-0",
 
           "next": "main_hall-start"
+        }
+      ]
+    },
+
+    "leave-immediately-confirm": {
+      "context": [
+        "Are you sure?",
+        "You just got here..."
+      ],
+
+      "choices": [
+        {
+          "text":      "Leave.",
+          "follow_up": "You leave.",
+
+          "next": "ENDING-leave_immediately"
+        },
+        {
+          "text":      "Stay.",
+          "follow_up": "You stay.",
+
+          "next": "_"
         }
       ]
     },
@@ -191,7 +212,9 @@
             "",
             "You peer into the reflective stained-glass, and see yourself.",
             "You find your face covered in a silver, opaque substance.",
-            "You remember its sting."
+            "You remember its sting.",
+            "",
+            "Your judgement now unclouded, you see that all else remains changed."
           ],
 
           "show_if": "resisted-1",
@@ -212,7 +235,6 @@
     "main_hall": {
       "context": [
         "That dim, orange twilight which once lit the room has now faded.",
-        "Your judgement now unclouded, you see that all else remains changed.",
         "The hall is still."
       ],
       "choices": [
@@ -221,9 +243,17 @@
           "follow_up": [
             "You look.",
             "",
-            "...",
+            "To your left, a marble statue of a woman.",
+            "You make out a faint engraving at the base.",
             "",
-            "[and you see some stuff idk]"
+            "Directly in front, a sea of wooden benches.",
+            "It parts in the center, and leads to the sanctuary.",
+            "A golden book lies upon the its altar.",
+            "",
+            "To your right, the haunting stained-glass window.",
+            "The depiction focuses on an individual gripping a torch.",
+            "You perceive an unkind glow from the person",
+            "It betrays the setting sun."
           ],
 
           "hide_if": "looked_around",
@@ -234,13 +264,132 @@
 
           "next": "main_hall"
         },
-        { "text":  "[interact w smthn you saw]", "show_if": "looked_around", "next": "main_hall" }
+        {
+          "text": "Investigate the woman of marble.",
+          "follow_up": [
+            "You turn left and approach the statue.",
+            "As you move, her gaze follows."
+          ],
+
+          "show_if": "looked_around",
+          "hide_if": "",
+
+          "next": "main_hall-statue"
+        },
+        {
+          "text": "Approach the altar.",
+
+          "follow_up": "(I didn't do this yet)",
+
+          "show_if": "looked_around",
+          "hide_if": "",
+
+          "next": "main_hall"
+        },
+        {
+          "text": "Investigate the stained glass's glow.",
+
+          "follow_up": "(I didn't do this yet)",
+
+          "show_if": "looked_around",
+          "hide_if": "",
+
+          "next": "main_hall"
+        }
+      ]
+    },
+
+    "main_hall-statue": {
+      "context": [
+        "You stand at the foot of the marble statue.",
+        "She towers above you."
+      ],
+
+      "choices": [
+        { "text": "Go back.", "next": "main_hall" },
+        {
+          "text": "Read the engraving.",
+          "follow_up": [
+            "You lower your gaze to her pedestal.",
+            "It reads:",
+            "",
+            "| \"Cogito, ergo sum\"",
+            "| A lie sold as truth",
+            "|",
+            "| Our claim to our worth",
+            "| Functions as its proof"
+          ],
+
+          "on_select": {
+            "set": "statue-read_engraving"
+          },
+
+          "next": "main_hall-statue"
+        },
+        {
+          "text": "Admire the woman.",
+          "follow_up": [
+            "You peer up into her expressionless eyes.",
+            "And you find nothing.",
+            "",
+            "There isn't a judgement that comes to your mind, nor hers.",
+            "She showed you something."
+          ],
+
+          "on_select": {
+            "set": "statue-admired"
+          },
+
+          "next": "main_hall-statue"
+        },
+        {
+          "text": "\"What did you show me?\"",
+          "follow_up": [
+            "(No response.)"
+          ],
+
+          "show_if": "statue-admired",
+          "hide_if": "statue-ask-0",
+
+          "on_select": {
+            "set": "statue-ask-0"
+          },
+
+          "next": "main_hall-statue"
+        },
+        {
+          "text": "\"Please, answer me.\"",
+          "follow_up": [
+            "(No response.)"
+          ],
+
+          "show_if": "statue-ask-0",
+          "hide_if": "statue-ask-1",
+
+          "on_select": {
+            "set": "statue-ask-1"
+          },
+
+          "next": "main_hall-statue"
+        },
+        {
+          "text": "\"What am I missing?\"",
+          "follow_up": [
+            "(No response.)"
+          ],
+
+          "show_if": "statue-ask-1",
+
+          "next": "main_hall-statue"
+        }
       ]
     },
 
     "ENDING-leave_immediately": {
       "context": [
-        "You don't look back."
+        "You don't look back.",
+        "",
+        "(You got the ending of a coward.)"
       ]
     },
 
