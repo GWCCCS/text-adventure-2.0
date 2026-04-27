@@ -54,7 +54,7 @@ def box_text(
     ])
 
 def print_spacer() -> None:
-    print("\n\n***\n\n")
+    print("\n\n***\n")
 
 def print_title(
         title: str,
@@ -147,8 +147,8 @@ class Adventure:
         self.title_screen()
         print_spacer()
         while scenario_key is not None:
-            scenario_key = self.do_scenario(scenario_key)
             print()
+            scenario_key = self.do_scenario(scenario_key)
         self.end_screen()
 
     def title_screen(self):
